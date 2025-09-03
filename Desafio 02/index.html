@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Validação Web3 e Juros Compostos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+      <a href="../index.html">Voltar</a>
+    </nav>
+  <div class="container">
+    <h1>Calculadora de Juros Compostos</h1>
+    <section>
+      <label for="principal">Quanto você quer investir? (R$)</label>
+      <input type="number" id="principal" min="0" step="any" placeholder="Ex: 1000" />
+
+      <label for="taxa">Taxa de juros (% por período)</label>
+      <input type="number" id="taxa" min="0" step="any" placeholder="Ex: 8" />
+
+      <label for="unidade">Unidade da taxa</label>
+      <select id="unidade">
+        <option value="ano">Ano</option>
+        <option value="mês">Mês</option>
+        <option value="dia">Dia</option>
+      </select>
+
+      <label for="periodos">Quantidade de períodos</label>
+      <input type="number" id="periodos" min="1" step="1" placeholder="Ex: 12" />
+
+      <button onclick="calcularJuros()">Calcular</button>
+
+      <p id="resultadoJuros"></p>
+    </section>
+
+    <hr />
+
+    <h1>Validação Web3</h1>
+    <section>
+      <h2>Validar Endereço de Carteira Ethereum</h2>
+      <input type="text" id="endereco" placeholder="Digite o endereço da carteira (0x...)" />
+      <button onclick="validarEndereco()">Validar</button>
+      <p id="resultadoEndereco"></p>
+
+      <h3>Transações Ordenadas por Valor</h3>
+      <button onclick="mostrarTransacoes()">Mostrar transações ordenadas</button>
+      <pre id="listaTransacoes"></pre>
+    </section>
+
+    <hr />
+
+    <h1>Verificação de Força de Senha</h1>
+    <section>
+      <input type="password" id="senha" placeholder="Digite a senha" />
+      <button onclick="verificarSenha()">Verificar Força</button>
+      <p id="resultadoSenha"></p>
+      <ul id="detalhesSenha"></ul>
+    </section>
+  </div>
+
+  <script>
+    // Questão 01: Juros compostos
+    function calcularJurosCompostos(principal, taxa, periodos) {
+      const valorFinal = principal * Math.pow(1 + taxa, periodos);
+      const jurosTotais = valorFinal - principal;
+
+      return {
+        valorFinal: valorFinal.toFixed(2),
+        jurosTotais: jurosTotais.toFixed(2)
+      };
+    }
+
+    function calcularJuros() {
+      const principal = parseFloat(document.getElementById("principal").value);
+      const taxaPercentual = parseFloat(document.getElementById("taxa").value);
+      const unidade = document.getElementById("unidade").value;
+      const periodos = parseInt(document.getElementById("periodos").value, 10);
+
+      if (isNaN(principal) || isNaN(taxaPercentual) || isNaN(periodos) || principal <= 0 || taxaPercentual < 0 || periodos <= 0) {
+        alert("Preencha todos os campos corretamente.");
+        return;
+      }
+
+      const taxa = taxaPercentual / 100;
+
+      const resultado = calcularJurosCompostos(principal, taxa, periodos);
+
+      const resultadoJuros = document.getElementById("resultadoJuros");
+      resultadoJuros.textContent = `Resultado após ${periodos} ${unidade}(s): Valor final: R$ ${resultado.valorFinal} | Total em juros: R$ ${resultado.jurosTotais}`;
+    }
+
+    // Questão 02: Validar endereço e ordenar transações
+    function validarEnderecoCarteira(endereco) {
+      const regex = /^0x[a-fA-F0-9]{40}$/;
+      return regex.test(endereco);
+    }
+
+    function validarEndereco() {
+      const endereco = document.getElementById("endereco").value.trim();
+      const valido = validarEnderecoCarteira(endereco);
+      const resultado = document.getElementById("resultadoEndereco");
+      resultado.textContent = valido ? "Endereço Válido ✅" : "Endereço Inválido ❌";
+      resultado.style.color = valido ? "green" : "red";
+    }
+
+    function ordenarTransacoesPorValor(transacoes) {
+      return transacoes.sort((a, b) => b.valor - a.valor);
+    }
+
+    const transacoes = [
+      { from: "0xabc123abc123abc123abc123abc123abc123abcd", to: "0xdef456def456def456def456def456def456def0", valor: 2.5 },
+      { from: "0x1231231231231231231231231231231231231231", to: "0x4564564564564564564564564564564564564564", valor: 10 },
+      { from: "0xaaa111aaa111aaa111aaa111aaa111aaa111aaa1", to: "0xbbb222bbb222bbb222bbb222bbb222bbb222bbb2", valor: 1.2 },
+    ];
+
+    function mostrarTransacoes() {
+      const ordenadas = ordenarTransacoesPorValor([...transacoes]); // clone para não modificar original
+      const lista = document.getElementById("listaTransacoes");
+      lista.textContent = JSON.stringify(ordenadas, null, 2);
+    }
+
+    // Questão 03: Verificar força da senha
+    function verificarForcaSenha(senha) {
+      const tamanhoMinimo = 8;
+
+      const temMaiuscula = /[A-Z]/.test(senha);
+      const temMinuscula = /[a-z]/.test(senha);
+      const temNumero = /[0-9]/.test(senha);
+      const temEspecial = /[!@#$%^&*()_\-+\[\]{}|;:'",.<>?/\\]/.test(senha);
+      const temTamanho = senha.length >= tamanhoMinimo;
+
+      let score = 0;
+      if (temTamanho) score++;
+      if (temMaiuscula) score++;
+      if (temMinuscula) score++;
+      if (temNumero) score++;
+      if (temEspecial) score++;
+
+      let forca;
+      switch(score) {
+        case 5:
+          forca = "Muito Forte";
+          break;
+        case 4:
+          forca = "Forte";
+          break;
+        case 3:
+          forca = "Média";
+          break;
+        case 2:
+          forca = "Fraca";
+          break;
+        default:
+          forca = "Muito Fraca";
+      }
+
+      return {
+        forca,
+        detalhes: {
+          "Tamanho mínimo (8 caracteres)": temTamanho,
+          "Letras maiúsculas": temMaiuscula,
+          "Letras minúsculas": temMinuscula,
+          "Números": temNumero,
+          "Caracteres especiais": temEspecial
+        }
+      };
+    }
+
+    function verificarSenha() {
+      const senha = document.getElementById("senha").value;
+      const resultado = verificarForcaSenha(senha);
+
+      const resultadoSenha = document.getElementById("resultadoSenha");
+      resultadoSenha.textContent = `Força da senha: ${resultado.forca}`;
+      resultadoSenha.style.color = (resultado.forca === "Muito Forte" || resultado.forca === "Forte") ? "green" : "red";
+
+      const detalhesLista = document.getElementById("detalhesSenha");
+      detalhesLista.innerHTML = "";
+
+      for (const [criterio, passou] of Object.entries(resultado.detalhes)) {
+        const li = document.createElement("li");
+        li.textContent = `${criterio}: ${passou ? "✔️" : "❌"}`;
+        li.style.color = passou ? "green" : "red";
+        detalhesLista.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -15,6 +15,10 @@ body {
     padding: 20px;
 }
 
+nav {
+    align-self: flex-start;
+}
+
 .container {
     background-color: whitesmoke;
     padding: 20px;

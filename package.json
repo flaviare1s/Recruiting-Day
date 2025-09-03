@@ -1,0 +1,23 @@
+{
+  "name": "desafio-fintech",
+  "version": "1.0.0",
+  "description": "- Flávia Reis\r - Nicolas Freire Ribeiro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flaviare1s/Recruiting-Day.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flaviare1s/Recruiting-Day/issues"
+  },
+  "homepage": "https://github.com/flaviare1s/Recruiting-Day#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}

@@ -1,30 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DESAFIO FINTECH WEB3</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="./Desafio 02/index.html">Desafio 2</a>
+    </nav>
     <div class="container">
-        <header class="header">
-            <h1>Login</h1>
-            <p>Insira seu endpoint e o endereço da sua carteira.</p>
-        </header>
-        <main>
-            <form>
-                <div class="inputdiv">
-                    <label for="endpoint">Endpoint: </label>
-                    <input type="url" id="endpoint" name="endpoint" placeholder="https://eth-sepolia.g.alchrmy.com/SUA_API_KEY" required>
-                </div>
-                <div class="inputdiv">
-                    <label for="wallet">Nº da Carteira: </label>
-                    <input type="password" id="wallet" name="wallet" placeholder="0x..." required>
-                </div>
-                <button class="button">Enviar dados</button>
-            </form>
-        </main>
+      <header class="header">
+        <h1>Login</h1>
+        <p>Insira seu endpoint e o endereço da sua carteira.</p>
+      </header>
+      <main>
+        <form>
+          <div class="inputdiv">
+            <label for="endpoint">Endpoint: </label>
+            <input
+              type="url"
+              id="endpoint"
+              name="endpoint"
+              placeholder="https://eth-sepolia.g.alchrmy.com/SUA_API_KEY"
+              required
+            />
+          </div>
+          <div class="inputdiv">
+            <label for="wallet">Nº da Carteira: </label>
+            <input
+              type="password"
+              id="wallet"
+              name="wallet"
+              placeholder="0x..."
+              required
+            />
+          </div>
+          <button class="button">Enviar dados</button>
+        </form>
+      </main>
     </div>
-</body> 
+  </body>
 </html>
