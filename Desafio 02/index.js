@@ -1,6 +1,3 @@
-const prompt = require('prompt-sync')();
-
-
 // Questão 01.
 const principal = parseFloat(prompt("Quanto você quer investir? (ex: 1000) R$ "));
 const taxaPercentual = parseFloat(prompt("Qual a taxa de juros? (ex: 8 para 8%) "));
