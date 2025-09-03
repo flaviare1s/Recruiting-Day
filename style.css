@@ -15,9 +15,6 @@ body {
     padding: 20px;
 }
 
-nav {
-    align-self: flex-start;
-}
 
 .container {
     background-color: whitesmoke;
@@ -88,4 +85,23 @@ h1, p {
 
 .button:hover {
     background: rgb(80, 115, 255);
+}
+
+nav {
+    display: block;
+    background: blue;
+    align-self: flex-start;
+    margin-bottom: 20px;
+    padding: 20px 0px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+nav a {
+    color: white;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
 }

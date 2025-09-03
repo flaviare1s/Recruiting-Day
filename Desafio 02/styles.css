@@ -87,6 +87,19 @@ ul li {
 }
 
 nav {
+    background: blue;
     align-self: flex-start;
     margin-bottom: 20px;
+    padding: 20px 0px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+nav a {
+    color: white;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
 }
