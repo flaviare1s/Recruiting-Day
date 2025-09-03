@@ -1,45 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DESAFIO FINTECH WEB3</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <nav>
-      <a href="./Desafio 02/index.html">Desafio 2</a>
-    </nav>
-    <div class="container">
-      <header class="header">
-        <h1>Login</h1>
-        <p>Insira seu endpoint e o endereço da sua carteira.</p>
-      </header>
-      <main>
-        <form>
-          <div class="inputdiv">
-            <label for="endpoint">Endpoint: </label>
-            <input
-              type="url"
-              id="endpoint"
-              name="endpoint"
-              placeholder="https://eth-sepolia.g.alchrmy.com/SUA_API_KEY"
-              required
-            />
-          </div>
-          <div class="inputdiv">
-            <label for="wallet">Nº da Carteira: </label>
-            <input
-              type="password"
-              id="wallet"
-              name="wallet"
-              placeholder="0x..."
-              required
-            />
-          </div>
-          <button class="button">Enviar dados</button>
-        </form>
-      </main>
-    </div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sepolia Dashboard • Alchemy + ethers</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script src="./index.js" defer></script>
+
+</head>
+
+<body>
+  <header class="container">
+    <h1>Sepolia Dashboard</h1>
+    <p class="muted">Cole seu <strong>endpoint Alchemy</strong> e um <strong>endereço</strong> para consultar.</p>
+    <form id="connect-form">
+      <label>
+        Endpoint (HTTPS)
+        <input id="endpoint" type="url" placeholder="https://eth-sepolia.g.alchemy.com/v2/SUA_API_KEY" required />
+      </label>
+      <label>
+        Endereço (0x…)
+        <input id="address" type="text" placeholder="0x..." required />
+      </label>
+      <button type="submit">Conectar & Carregar</button>
+    </form>
+    <div id="status" class="status">Aguardando…</div>
+  </header>
+
+  <main class="container grid">
+    <section class="card">
+      <h2>Conta</h2>
+      <div class="kv"><span>Endereço</span><code id="acct-address">—</code></div>
+      <div class="kv"><span>Saldo (wei)</span><code id="balance-wei">—</code></div>
+      <div class="kv"><span>Saldo (ETH)</span><code id="balance-eth">—</code></div>
+      <div class="kv"><span>Tx Count (nonce)</span><code id="txcount">—</code></div>
+    </section>
+
+    <section class="card">
+      <h2>Rede</h2>
+      <div class="kv"><span>Chain ID</span><code id="chainid">—</code></div>
+      <div class="kv"><span>Nome</span><code id="network-name">—</code></div>
+      <div class="kv"><span>Client Version</span><code id="client-version">—</code></div>
+    </section>
+
+    <section class="card">
+      <h2>Gas</h2>
+      <div class="kv"><span>Gas Price</span><code id="gas-price">—</code></div>
+      <div class="kv"><span>Max Priority Fee</span><code id="priority-fee">—</code></div>
+      <div class="kv"><span>Base Fee (últ. bloco)</span><code id="base-fee">—</code></div>
+    </section>
+
+    <section class="card">
+      <h2>Último bloco</h2>
+      <div class="kv"><span>Número</span><code id="block-number">—</code></div>
+      <div class="kv"><span>Hash</span><code id="block-hash">—</code></div>
+      <div class="kv"><span>Timestamp</span><code id="block-time">—</code></div>
+      <div class="kv"><span>Total de TXs</span><code id="block-txs">—</code></div>
+    </section>
+
+    <section class="card">
+      <h2>Fee History (5 blocos)</h2>
+      <div class="kv"><span>Base fees</span><code id="feehistory-base">—</code></div>
+      <div class="kv"><span>Rewards (p50)</span><code id="feehistory-rew">—</code></div>
+    </section>
+  </main>
+
+  <footer class="container alert">
+    <p>⚠️ Somente para estudo local. Não exponha sua API key publicamente!</p>
+  </footer>
+</body>
+
 </html>

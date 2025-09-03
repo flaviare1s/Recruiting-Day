@@ -1,0 +1,77 @@
+:root {
+  --bg: #0b0f14;
+  --card: #111826;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #6ee7b7;
+  --ring: #2563eb33;
+  --border: #1f2937;
+  --alert-bg: #831843;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+.container { width: min(1100px, 92%); margin: 24px auto; }
+header h1 { margin: 0 0 8px; font-size: 28px; }
+.muted { color: var(--muted); }
+.alert { color: var(--alert-bg); font-weight: bold; }
+
+form#connect-form {
+  margin: 16px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+}
+form label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+input {
+  background: #0d1420; color: var(--text); border: 1px solid var(--border);
+  padding: 10px 12px; border-radius: 12px; outline: none;
+}
+input:focus { border-color: var(--accent); box-shadow: 0 0 0 6px var(--ring); }
+
+button {
+  align-self: end; padding: 12px 16px; border: 0; border-radius: 12px;
+  background: linear-gradient(135deg, #22c55e, #06b6d4);
+  color: #081018; font-weight: 700; cursor: pointer;
+}
+button:hover { filter: brightness(1.05); }
+
+.status {
+  margin-top: 8px; padding: 10px 12px; border: 1px dashed var(--border);
+  border-radius: 12px; font-size: 14px; background: #0d1420;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.card {
+  grid-column: span 6;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.03);
+}
+.card h2 { margin: 0 0 12px; font-size: 18px; }
+
+.kv {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,.06);
+}
+.kv:last-child { border-bottom: 0; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  background: #0b1220; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--border);
+  word-break: break-all; max-width: 65%;
+}
+
+@media (max-width: 900px) {
+  .card { grid-column: span 12; }
+  form#connect-form { grid-template-columns: 1fr; }
+  code { max-width: 100%; }
+}
