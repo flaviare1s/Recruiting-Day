@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
+.container {
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    transition: 300ms;
+    max-width: 450px;
+    width: 100%;
+}
+
+.container:hover {
+    box-shadow: 0px 0px 5px rgba(25, 71, 255, 0.8);
+}
+
+h1 {
+    font-size: 28px;
+}
+
+p {
+    color: gray;
+    font-size: 14px;
+}
+
+h1, p {
+    margin-bottom: 10px;
+}
+
+.inputdiv label {
+    display: block;
+    text-align: start;
+    margin-bottom: 5px;
+    
+}
+
+.inputdiv input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(225, 225, 225);
+    width: 100%;
+    height: 35px;
+    margin-bottom: 10px;
+}
+
+.inputdiv input:focus {
+    outline-color: rgb(25, 71, 255);
+}
+
+.button {
+    height: 35px;
+    width: 100%;
+    background: rgb(25, 71, 255);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    transition: 300ms;
+    margin-top: 5px;
+}
+
+.button:hover {
+    background: rgb(80, 115, 255);
+}
