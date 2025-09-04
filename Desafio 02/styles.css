@@ -14,10 +14,6 @@ body {
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-a {
-    text-decoration: none;
-}
-
 h1 {
     font-size: 28px;
 }
@@ -84,22 +80,4 @@ ul {
 ul li {
   font-size: 16px;
   margin-bottom: 5px;
-}
-
-nav {
-    background: blue;
-    align-self: flex-start;
-    margin-bottom: 20px;
-    padding: 20px 0px;
-    width: 150px;
-    border-radius: 5px;
-}
-
-nav a {
-    color: white;
-    display: block;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-align: center;
 }
