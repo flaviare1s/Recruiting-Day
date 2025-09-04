@@ -144,12 +144,6 @@ git clone https://github.com/flaviare1s/Recruiting-Day.git
 cd Recruiting-Day
 ```
 
-2. Instale as dependências:
-
-```bash
-npm install
-```
-
 3. Abra o arquivo `index.html` no navegador ou use um servidor local
 
 4. No Dashboard Sepolia:
